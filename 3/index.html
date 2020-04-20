@@ -63,6 +63,10 @@
     <a-assets>
       <!-- Credit to Poly by Google for the model: https://poly.google.com/view/6pwiq7hSrHr -->
       <a-asset-item id="treeModel" src="tree.glb"></a-asset-item>
+
+      <video id="alpha-video2" muted autoplay playsinline crossorigin="anonymous" loop="true"
+        src="https://mhellar.github.io/arproject/1/test5.mp4">
+      </video>
     </a-assets>
 
     <!-- The raycaster will emit mouse events on scene objects specified with the cantap class -->
@@ -77,10 +81,11 @@
 
     <a-light type="ambient" intensity="1"></a-light>
 
-    <!-- Adding the cantap class allows the ground to be clicked -->
-    <a-entity id="ground" class="cantap" geometry="primitive: box"
-      material="color: #ffffff; transparent: true; opacity: 0.0" scale="1000 2 1000" position="0 -1 0">
+    <a-entity class="cantap" material="shader: chromakey; src: #alpha-video2; color: 0.1 0.9 0.2"
+      geometry="primitive: plane; height: 0.6; width: 1.38;">
     </a-entity>
+
+
   </a-scene>
 </body>
 
