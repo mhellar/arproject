@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>8th Wall Web: Capture a photo</title>
+
+
+  <!-- We've included a slightly modified version of A-Frame, which fixes some polish concerns -->
+  <script src="//cdn.8thwall.com/web/aframe/8frame-0.9.0.min.js"></script>
+  <script src="photo-mode.js"></script>
+
+
+  <!-- https://github.com/nikolaiwarner/aframe-chromakey-material/blob/master/README.md -->
+  <script src="https://unpkg.com/aframe-chromakey-material/dist/aframe-chromakey-material.min.js"></script>
+
+  <!-- XR Extras - provides utilities like load screen, almost there, and error handling.
+         See github.com/8thwall/web/xrextras -->
+  <script defer src="//cdn.8thwall.com/web/xrextras/xrextras.js"></script>
+  <script defer src="//cdn.8thwall.com/web/aframe/aframe-animation-component-5.1.2.min.js"></script>
+
+  <!-- 8thWall Web - Replace the app key here with your own app key -->
+  <script
+    src="//apps.8thwall.com/xrweb?appKey=3sHnQ4OXZQFe96a2ellw14qGtnFFyZqiEIfH1IbAzm3Cg8uwFWqLgxuw9xPFaafvFyLPhw"></script>
+
+  <script>
+    AFRAME.registerComponent('target-video', {
+      schema: {
+        name: { type: 'string' },
+        video: { type: 'string' },
+      },
+      init: function () {
+        const object3D = this.el.object3D
+        const name = this.data.name
+        object3D.visible = false
+        const v = document.querySelector(this.data.video)
+        const el = this.el
+
+        const showImage = ({ detail }) => {
+          if (name != detail.name) {
+            return
+          }
+          v.play()
+          object3D.position.copy(detail.position)
+          object3D.quaternion.copy(detail.rotation)
+          object3D.scale.set(detail.scale, detail.scale, detail.scale)
+          object3D.visible = true
+        }
+
+        const hideImage = ({ detail }) => {
+          if (name != detail.name) {
+            return
+          }
+          v.pause()
+          object3D.visible = false
+        }
+
+        this.el.sceneEl.addEventListener('xrimagefound', showImage)
+        this.el.sceneEl.addEventListener('xrimageupdated', showImage)
+        this.el.sceneEl.addEventListener('xrimagelost', hideImage)
+      }
+    })
+  </script>
+
+  <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+  <!-- These HTML elements are used to show an UI laid over the scene -->
+  <div id="photoModeContainer" style="display: none">
+    <img id="photoModeImage">
+    <div id="flash"></div>
+    <div id="shutterButton"></div>
+    <div id="closeButton"></div>
+  </div>
+
+  <a-scene xrweb xrextras-almost-there xrextras-loading xrextras-runtime-error xrextras-tap-recenter photo-mode>
+
+    <!-- We can define assets here to be loaded when A-Frame initializes -->
+    <a-assets>
+      <!-- Credit to Poly by Google for the model: https://poly.google.com/view/fojR5i3h_nh -->
+      <a-asset-item id="flyingSaucerModel" src="flying-saucer.glb"></a-asset-item>
+      <video id="alpha-video" muted autoplay playsinline crossorigin="anonymous" loop="true"
+        src="https://mhellar.github.io/arproject/1/test5.mp4">
+      </video>
+    </a-assets>
+
+    <a-camera position="0 4 10"></a-camera>
+
+    <a-entity light="type: directional;
+               intensity: 0.8;" position="1 4.3 2.5">
+    </a-entity>
+
+    <a-light type="ambient" intensity="1"></a-light>
+
+    <a-entity material="shader: chromakey; src: #alpha-video2; color: 0.1 0.9 0.2"
+      geometry="primitive: plane; height: 0.6; width: 1.38;" scale="300 300 300" position="0 7 0"></a-entity>
+
+
+  </a-scene>
+</body>
+
+</html>
