@@ -93,7 +93,7 @@
           newElement.setAttribute('text-wall', 'amount: 1;')
           // The raycaster gives a location of the touch in the scene
           const touchPoint = event.detail.intersection.point
-          newElement.setAttribute('position', touchPoint + this.getRandomInt(-5, 5))
+          newElement.setAttribute('position', touchPoint)
 
           const randomYRotation = Math.random() * 45
           newElement.setAttribute('rotation', '0 ' + randomYRotation + ' 0')
@@ -101,6 +101,7 @@
           newElement.setAttribute('visible', 'false')
           newElement.setAttribute('scale', '0.0001 0.0001 0.0001')
 
+          const randomPos = Math.random() * 45
           this.el.sceneEl.appendChild(newElement)
 
           // Once the model is loaded, we are ready to show it popping in using an animation
@@ -111,9 +112,9 @@
             easing: 'easeOutElastic',
             dur: 800,
           })
-          newElement.setAttribute('animation', {
+          newElement.setAttribute('animation__pos', {
             property: 'position',
-            to: '0 5 0',
+            to: '0 ' + randomPos + ' 0',
             dir: 'alternate'
             easing: 'easeOutElastic',
             dur: 800,
