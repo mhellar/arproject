@@ -97,6 +97,9 @@
           const randomYRotation = Math.random() * 45
           newElement.setAttribute('rotation', '0 ' + randomYRotation + ' 0')
 
+          const randomPos = Math.random() * 10
+          newElement.setAttribute('rotation', '0 ' + randomPos + ' 0')
+
           newElement.setAttribute('visible', 'false')
           newElement.setAttribute('scale', '0.0001 0.0001 0.0001')
 
@@ -108,6 +111,13 @@
           newElement.setAttribute('animation', {
             property: 'scale',
             to: '10 10 10',
+            easing: 'easeOutElastic',
+            dur: 800,
+          })
+          newElement.setAttribute('animation', {
+            property: 'position',
+            to: '10 10 10',
+            dir: 'alternate'
             easing: 'easeOutElastic',
             dur: 800,
           })
