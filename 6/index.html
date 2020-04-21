@@ -6,7 +6,7 @@
   <title>8th Wall Web: Tap to place</title>
 
   <!-- We've included a slightly modified version of A-Frame, which fixes some polish concerns -->
-  <script src="//cdn.8thwall.com/web/aframe/8frame-0.8.2.min.js"></script>
+  <script src="//cdn.8thwall.com/web/aframe/8frame-0.9.0.min.js"></script>
   <script src="//cdn.8thwall.com/web/aframe/aframe-animation-component-5.1.2.min.js"></script>
 
   <!-- XR Extras - provides utilities like load screen, almost there, and error handling.
@@ -42,6 +42,11 @@
         },
       },
 
+      getRandomInt: function (min, max) {
+        min = Math.ceil(min);
+        max = Math.floor(max);
+        return Math.floor(Math.random() * (max - min)) + min; //The maximum is exclusive and the minimum is inclusive
+      },
       getRandomColor: function () {
         var letters = '0123456789ABCDEF'.split('');
         var color = '#';
@@ -74,6 +79,18 @@
           saying.setAttribute('scale', '1 1 1');
           saying.setAttribute('position', '0 ' + i + ' -2');
           saying.setAttribute('material', "color: " + this.getRandomColor() + " ");
+
+          saying.setAttribute('animation', {
+            property: 'position',
+            dir: 'alternate',
+            dur: 30000,
+            delay: 0,
+            to: this.getRandomInt(-5, 5) + ' ' + this.getRandomInt(-5, 5) + ' ' +
+              this.getRandomInt(-5, 5),
+            easing: 'easeInSine',
+            loop: true
+          });
+
           this.el.appendChild(saying);
         }
       }
