@@ -105,16 +105,16 @@
 
           // Once the model is loaded, we are ready to show it popping in using an animation
           newElement.setAttribute('visible', 'true')
-          box.setAttribute('animation__pos', {
+          box.setAttribute('animation', {
             property: 'position',
             dir: 'alternate',
             dur: 30000,
             delay: 0,
-            to: '0 ' + randomYRotation + ' 0',
+            to: this.getRandomInt(-10, 10) + ' ' + this.getRandomInt(-10, 10) + ' ' +
+              this.getRandomInt(-10, 10),
             easing: 'easeInSine',
             loop: true
-          });
-
+          })
           newElement.setAttribute('animation', {
             property: 'scale',
             to: '5 5 5',
