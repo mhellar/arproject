@@ -70,7 +70,10 @@
           "KEEP SOMETHING IN RESERVE FOR EMERGENCIES",
           "HUMOR IS A RELEASE",
           "ILLNESS IS A STATE OF MIND",
-          "IT IS HEROIC TO TRY TO STOP TIME"];
+          "KEEP SOMETHING IN RESERVE FOR EMERGENCIES",
+          "LOVING ANIMALS IS A SUBSTITUTE ACTIVITY",
+          "NOISE CAN BE HOSTILE",
+          "PHYSICAL CULTURE IS SECOND-BEST"];
         for (var i = 0; i < this.data.amount; i++) {
           const randomMonth = truisms[Math.floor(Math.random() * truisms.length)];
           var saying = document.createElement('a-entity');
@@ -83,7 +86,7 @@
           saying.setAttribute('animation', {
             property: 'position',
             dir: 'alternate',
-            dur: 10000,
+            dur: 20000,
             delay: 0,
             to: this.getRandomInt(-10, 10) + ' ' + this.getRandomInt(-10, 10) + ' ' +
               this.getRandomInt(-10, 10),
