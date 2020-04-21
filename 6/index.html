@@ -95,7 +95,7 @@
           const touchPoint = event.detail.intersection.point
           newElement.setAttribute('position', touchPoint)
 
-          const randomYRotation = Math.random() * 5
+          // const randomYRotation = Math.random() * 45
           // newElement.setAttribute('rotation', '0 ' + randomYRotation + ' 0')
 
           newElement.setAttribute('visible', 'false')
@@ -105,19 +105,10 @@
 
           // Once the model is loaded, we are ready to show it popping in using an animation
           newElement.setAttribute('visible', 'true')
-          box.setAttribute('animation', {
-            property: 'position',
-            dir: 'alternate',
-            dur: 30000,
-            delay: 0,
-            to: this.getRandomInt(-10, 10) + ' ' + this.getRandomInt(-10, 10) + ' ' +
-              this.getRandomInt(-10, 10),
-            easing: 'easeInSine',
-            loop: true
-          })
           newElement.setAttribute('animation', {
             property: 'scale',
-            to: '5 5 5',
+            to: this.getRandomInt(-3, 3) + ' ' + this.getRandomInt(-3, 3) + ' ' +
+              this.getRandomInt(-3, 3),
             easing: 'easeOutElastic',
             dur: 800,
           })
