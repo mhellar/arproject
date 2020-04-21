@@ -101,7 +101,6 @@
           newElement.setAttribute('visible', 'false')
           newElement.setAttribute('scale', '0.0001 0.0001 0.0001')
 
-          const randomPos = Math.random() * 45
           this.el.sceneEl.appendChild(newElement)
 
           // Once the model is loaded, we are ready to show it popping in using an animation
@@ -111,14 +110,6 @@
             to: '5 5 5',
             easing: 'easeOutElastic',
             dur: 800,
-          })
-          newElement.setAttribute('animation__pos', {
-            property: 'position',
-            to: '0 ' + randomPos + ' 0',
-            dir: 'alternate'
-            easing: 'easeOutElastic',
-            dur: 800,
-            loop: true
           })
         })
       }
