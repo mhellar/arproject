@@ -41,6 +41,14 @@
           default: 10000
         },
       },
+      getRandomColor: function () {
+        var letters = '0123456789ABCDEF'.split('');
+        var color = '#';
+        for (var i = 0; i < 6; i++) {
+          color += letters[Math.floor(Math.random() * 16)];
+        }
+        return color;
+      },
 
       init: function () {
         const truisms = ["ANIMALISM IS PERFECTLY HEALTHY",
@@ -64,7 +72,7 @@
           saying.setAttribute('font', "#droidFont");
           saying.setAttribute('scale', '1 1 1');
           saying.setAttribute('position', '0 ' + i + ' -2');
-          saying.setAttribute('material', "color: white");
+          saying.setAttribute('material', "color: " + getRandomColor);
           this.el.appendChild(saying);
         }
       }
@@ -75,15 +83,6 @@
         max = Math.floor(max);
         return Math.floor(Math.random() * (max - min)) + min; //The maximum is exclusive and the minimum is inclusive
       },
-
-      getRandomColor: function () {
-        var letters = '0123456789ABCDEF'.split('');
-        var color = '#';
-        for (var i = 0; i < 6; i++) {
-          color += letters[Math.floor(Math.random() * 16)];
-        }
-        return color;
-      },
       init: function () {
         const ground = document.getElementById('ground')
         ground.addEventListener('click', event => {
@@ -92,13 +91,11 @@
           newElement.setAttribute('text-wall', 'amount: 1;')
           // The raycaster gives a location of the touch in the scene
           const touchPoint = event.detail.intersection.point
-          newElement.setAttribute('position', touchPoint)
+          const randomPos = Math.random() * 10
+          newElement.setAttribute('position', touchPoint + randomPos)
 
           const randomYRotation = Math.random() * 45
           newElement.setAttribute('rotation', '0 ' + randomYRotation + ' 0')
-
-          const randomPos = Math.random() * 10
-          newElement.setAttribute('position', '0 ' + randomPos + ' 0')
 
           newElement.setAttribute('visible', 'false')
           newElement.setAttribute('scale', '0.0001 0.0001 0.0001')
