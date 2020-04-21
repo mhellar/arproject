@@ -72,7 +72,7 @@
         ground.addEventListener('click', event => {
           // Create new entity for the new object
           const newElement = document.createElement('a-entity')
-
+          newElement.setAttribute('text-wall', 'amount: 10;')
           // The raycaster gives a location of the touch in the scene
           const touchPoint = event.detail.intersection.point
           newElement.setAttribute('position', touchPoint)
@@ -83,7 +83,7 @@
           newElement.setAttribute('visible', 'false')
           newElement.setAttribute('scale', '0.0001 0.0001 0.0001')
 
-          newElement.setAttribute('text-wall', 'amount: 10;')
+
           this.el.sceneEl.appendChild(newElement)
 
           // Once the model is loaded, we are ready to show it popping in using an animation
