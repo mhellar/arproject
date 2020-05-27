@@ -31,20 +31,25 @@
 
             newElement.setAttribute('visible', 'true')
 
-            newElement.setAttribute('scale', '3 3 3')
+            newElement.setAttribute('scale', '5 5 5')
 
-            newElement.setAttribute('geometry', 'primitive:plane;width:2;height:2')
-            newElement.setAttribute('material', 'shader:gif;src:#nyancat;alphaTest:0.5;')
-            
+            // newElement.setAttribute('geometry', 'primitive:plane;width:2;height:2')
+            // newElement.setAttribute('material', 'shader:gif;src:#nyancat;alphaTest:0.5;')
+
+            newElement.setAttribute('xrextras-play-video', 'video: #jelly-video; thumb: #jelly-thumb; canstop: false')
+            newElement.setAttribute('geometry', 'primitive: plane; height: 1; width: 0.79;')
+            const video = document.getElementById("jelly-video")
             this.el.sceneEl.appendChild(newElement)
-
 
               // Once the model is loaded, we are ready to show it popping in using an animation
               newElement.setAttribute('visible', 'true')
+              video.play();  
+
 
           })
         }
       })
+
 
 
     </script>
@@ -61,9 +66,20 @@
 
       <!-- We can define assets here to be loaded when A-Frame initializes -->
       <a-assets>
+
+        <video
+        id="jelly-video"
+        autoplay
+        muted
+        playsinline
+        crossorigin="anonymous"
+        crossorigin="anonymous"
+        loop="true"
+        src="jellyfish-video.mp4">
+      </video>
         <!-- Credit to Poly by Google for the model: https://poly.google.com/view/6pwiq7hSrHr -->
         <a-asset-item id="treeModel" src="tree.glb"></a-asset-item>
-        <img id="nyancat" src="nyancat.gif">
+        <img id="nyancat" src="output1.gif">
         <img id="pusheen" src="https://media.giphy.com/media/G1NuU6Whiaen6/giphy.gif">
         <img id="banana" src="banana.gif">
       </a-assets>
