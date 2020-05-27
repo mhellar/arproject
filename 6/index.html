@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="utf-8">
-  <title>8th Wall Web: Tap to place</title>
+  <title>Ar Demo 6</title>
 
   <!-- We've included a slightly modified version of A-Frame, which fixes some polish concerns -->
   <script src="//cdn.8thwall.com/web/aframe/8frame-0.9.0.min.js"></script>
@@ -56,6 +56,7 @@
         return color;
       },
 
+
       init: function () {
         const truisms = ["ANIMALISM IS PERFECTLY HEALTHY",
           "ALWAYS STORE FOOD",
@@ -87,8 +88,8 @@
           var saying = document.createElement('a-entity');
           saying.setAttribute('text-geometry', "value: " + randomMonth + "; font: #droidFont");
           saying.setAttribute('font', "#droidFont");
-          saying.setAttribute('scale', '1 1 1');
-          saying.setAttribute('position', '-5 ' + i + ' -2');
+          saying.setAttribute('scale', '.37 .37 .37');
+          saying.setAttribute('position', '-2.5 ' + i + ' -3');
           saying.setAttribute('material', "color: " + this.getRandomColor() + " ");
 
           saying.setAttribute('animation', {
@@ -96,7 +97,7 @@
             dir: 'alternate',
             dur: 20000,
             delay: 0,
-            to: this.getRandomInt(-10, 10) + ' ' + this.getRandomInt(-10, 10) + ' ' +
+            to: '-2.5 0' + ' ' +
               this.getRandomInt(-10, 10),
             easing: 'easeInSine',
             loop: true
