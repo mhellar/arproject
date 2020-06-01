@@ -45,8 +45,8 @@ AFRAME.registerComponent('hello-world', {
             let box = document.createElement('a-gltf-model');
             box.setAttribute('src', 'model/' + this.data.model);
             box.setAttribute('color', this.getRandomColor());
-            box.setAttribute('position', this.getRandomInt(-100, 100) + ' ' + this.getRandomInt(-
-                -200, 20) + ' ' + this.getRandomInt(-100, 10));
+            box.setAttribute('position', this.getRandomInt(-200, 200) + ' ' + this.getRandomInt(-
+                -200, 20) + ' ' + this.getRandomInt(-200, 10));
             box.setAttribute('scale', s + ' ' + s + ' ' + s);
             // box.setAttribute('scale', '20 20 20');
             // box.setAttribute('rotation', '0 0 ' + this.getRandomInt(-180, 180));
@@ -62,8 +62,8 @@ AFRAME.registerComponent('hello-world', {
                 dir: 'alternate',
                 dur: this.getRandomInt(30000, 60000),
                 delay: 2000,
-                to: this.getRandomInt(-100, 100) + ' ' + this.getRandomInt(-100, 100) + ' ' +
-                    this.getRandomInt(-100, 100),
+                to: this.getRandomInt(-200, 200) + ' ' + this.getRandomInt(-200, 200) + ' ' +
+                    this.getRandomInt(-200, 200),
                 easing: 'easeInSine',
                 loop: true
             });
@@ -72,8 +72,8 @@ AFRAME.registerComponent('hello-world', {
                 property: 'rotation',
                 dir: 'alternate',
                 dur: this.getRandomInt(30000, 60000),
-                to: this.getRandomInt(0, 90) + ' ' + this.getRandomInt(0, 90) + ' ' +
-                    this.getRandomInt(0, 90),
+                to: this.getRandomInt(0, 30) + ' ' + this.getRandomInt(0, 30) + ' ' +
+                    this.getRandomInt(0, 30),
                 easing: 'easeInSine',
                 loop: true
             });
@@ -137,8 +137,8 @@ AFRAME.registerComponent('probe', {
             let box = document.createElement('a-gltf-model');
             box.setAttribute('src', 'model/love.glb');
             box.setAttribute('color', this.getRandomColor());
-            box.setAttribute('position', this.getRandomInt(-100, 100) + ' ' + this.getRandomInt(-
-                -100, 100) + ' ' + this.getRandomInt(-100, 100));
+            box.setAttribute('position', this.getRandomInt(-200, 200) + ' ' + this.getRandomInt(-
+                -200, 200) + ' ' + this.getRandomInt(-200, 200));
             box.setAttribute('scale', s + ' ' + s + ' ' + s);
             // box.setAttribute('scale', '20 20 20');
             // box.setAttribute('rotation', '0 0 ' + this.getRandomInt(-180, 180));
@@ -154,8 +154,8 @@ AFRAME.registerComponent('probe', {
                 dir: 'alternate',
                 dur: this.getRandomInt(30000, 60000),
                 delay: 2000,
-                to: this.getRandomInt(-100, 100) + ' ' + this.getRandomInt(-100, 100) + ' ' +
-                    this.getRandomInt(-100, 100),
+                to: this.getRandomInt(-200, 200) + ' ' + this.getRandomInt(-200, 200) + ' ' +
+                    this.getRandomInt(-200, 200),
                 easing: 'easeInSine',
                 loop: true
             });
@@ -164,8 +164,8 @@ AFRAME.registerComponent('probe', {
                 property: 'rotation',
                 dir: 'alternate',
                 dur: this.getRandomInt(30000, 60000),
-                to: this.getRandomInt(0, 90) + ' ' + this.getRandomInt(0, 90) + ' ' +
-                    this.getRandomInt(0, 90),
+                to: this.getRandomInt(0, 30) + ' ' + this.getRandomInt(0, 30) + ' ' +
+                    this.getRandomInt(0, 30),
                 easing: 'easeInSine',
                 loop: true
             });
