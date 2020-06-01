@@ -4,6 +4,10 @@ AFRAME.registerComponent('hello-world', {
             type: 'number',
             default: 10
         },
+        model: {
+            type: 'string',
+            default: 'cause.glb'
+        },
         color: {
             type: 'color',
             default: 'red'
@@ -38,14 +42,14 @@ AFRAME.registerComponent('hello-world', {
 
         for (let i = 1; i < this.data.amount; i++) {
             let s = this.getRandomInt(1, this.data.randScaleMax);
-            let box = document.createElement('a-obj-model');
-            box.setAttribute('src', 'model/jewel.obj');
+            let box = document.createElement('a-gltf-model');
+            box.setAttribute('src', 'model/' + this.data.model);
             box.setAttribute('color', this.getRandomColor());
-            box.setAttribute('position', this.getRandomInt(-60, 60) + ' ' + this.getRandomInt(-
-                -60, 60) + ' ' + this.getRandomInt(-60, 60));
+            box.setAttribute('position', this.getRandomInt(-100, 100) + ' ' + this.getRandomInt(-
+                -200, 20) + ' ' + this.getRandomInt(-100, 10));
             box.setAttribute('scale', s + ' ' + s + ' ' + s);
             // box.setAttribute('scale', '20 20 20');
-            box.setAttribute('rotation', '0 0 ' + this.getRandomInt(-180, 180));
+            // box.setAttribute('rotation', '0 0 ' + this.getRandomInt(-180, 180));
             box.setAttribute('radius', i);
             box.setAttribute('metalness', 1);
             box.setAttribute('emissiveIntensity', 1);
@@ -56,7 +60,7 @@ AFRAME.registerComponent('hello-world', {
             box.setAttribute('animation', {
                 property: 'position',
                 dir: 'alternate',
-                dur: this.getRandomInt(2000, 30000),
+                dur: this.getRandomInt(30000, 60000),
                 delay: 2000,
                 to: this.getRandomInt(-100, 100) + ' ' + this.getRandomInt(-100, 100) + ' ' +
                     this.getRandomInt(-100, 100),
@@ -67,9 +71,9 @@ AFRAME.registerComponent('hello-world', {
             box.setAttribute('animation__rot', {
                 property: 'rotation',
                 dir: 'alternate',
-                dur: this.getRandomInt(10000, 40000),
-                to: this.getRandomInt(0, 360) + ' ' + this.getRandomInt(0, 360) + ' ' +
-                    this.getRandomInt(0, 360),
+                dur: this.getRandomInt(30000, 60000),
+                to: this.getRandomInt(0, 90) + ' ' + this.getRandomInt(0, 90) + ' ' +
+                    this.getRandomInt(0, 90),
                 easing: 'easeInSine',
                 loop: true
             });
@@ -130,14 +134,14 @@ AFRAME.registerComponent('probe', {
 
         for (let i = 1; i < this.data.amount; i++) {
             let s = this.getRandomInt(1, this.data.randScaleMax);
-            let box = document.createElement('a-obj-model');
-            box.setAttribute('src', 'model/probe.obj');
+            let box = document.createElement('a-gltf-model');
+            box.setAttribute('src', 'model/love.glb');
             box.setAttribute('color', this.getRandomColor());
-            box.setAttribute('position', this.getRandomInt(-60, 60) + ' ' + this.getRandomInt(-
-                -60, 60) + ' ' + this.getRandomInt(-60, 60));
+            box.setAttribute('position', this.getRandomInt(-100, 100) + ' ' + this.getRandomInt(-
+                -100, 100) + ' ' + this.getRandomInt(-100, 100));
             box.setAttribute('scale', s + ' ' + s + ' ' + s);
             // box.setAttribute('scale', '20 20 20');
-            box.setAttribute('rotation', '0 0 ' + this.getRandomInt(-180, 180));
+            // box.setAttribute('rotation', '0 0 ' + this.getRandomInt(-180, 180));
             box.setAttribute('radius', i);
             box.setAttribute('metalness', 1);
             box.setAttribute('emissiveIntensity', 1);
@@ -148,7 +152,7 @@ AFRAME.registerComponent('probe', {
             box.setAttribute('animation', {
                 property: 'position',
                 dir: 'alternate',
-                dur: this.getRandomInt(5000, 30000),
+                dur: this.getRandomInt(30000, 60000),
                 delay: 2000,
                 to: this.getRandomInt(-100, 100) + ' ' + this.getRandomInt(-100, 100) + ' ' +
                     this.getRandomInt(-100, 100),
@@ -159,9 +163,9 @@ AFRAME.registerComponent('probe', {
             box.setAttribute('animation__rot', {
                 property: 'rotation',
                 dir: 'alternate',
-                dur: this.getRandomInt(10000, 40000),
-                to: this.getRandomInt(0, 360) + ' ' + this.getRandomInt(0, 360) + ' ' +
-                    this.getRandomInt(0, 360),
+                dur: this.getRandomInt(30000, 60000),
+                to: this.getRandomInt(0, 90) + ' ' + this.getRandomInt(0, 90) + ' ' +
+                    this.getRandomInt(0, 90),
                 easing: 'easeInSine',
                 loop: true
             });

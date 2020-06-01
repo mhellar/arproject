@@ -23,12 +23,29 @@
         },
       })
 
+      AFRAME.registerComponent('play-on-window-click', {
+  init: function() {
+    this.onClick = this.onClick.bind(this);
+  },
+  play: function() {
+    window.addEventListener('click', this.onClick);
+  },
+  pause: function() {
+    window.removeEventListener('click', this.onClick);
+  },
+  onClick: function(evt) {
+    var video = this.el.components.material.material.map.image;
+    if (!video) { return; }
+    video.play();
+  }
+});
+
       // This component hides and shows certain elements as the camera moves
       AFRAME.registerComponent('portal', {
         schema: {
-          width: {default: 4},
-          height: {default: 6},
-          depth: {default: 1},
+          width: {default: 12},
+          height: {default: 16},
+          depth: {default: 4},
         },
         init: function(){
           this.camera = document.getElementById('camera')
@@ -75,6 +92,13 @@
       <a-assets>
         <!-- Credit to Poly by Google for the model: https://poly.google.com/view/0fVRHo65E-j -->
         <a-asset-item id="unicornModel" src="unicorn.glb"></a-asset-item>
+
+        <video id="video" style="display:none"
+    autoplay loop crossorigin="anonymous" playsinline
+    webkit-playsinline>
+  <!-- MP4 video source. -->
+  <source type="video/mp4" src="https://cdn.8thwall.com/web/assets/video/city.mp4" />
+</video>
       </a-assets>
 
       <a-camera
@@ -141,10 +165,8 @@
       </a-entity>
 
       <a-entity id="portal-contents">
-        <a-entity
-          scale="0.3 0.3 0.3"
-          position="0 0 -7"
-          gltf-model="#unicornModel"></a-entity>
+        <a-videosphere rotation="0 0 0" src="#video" play-on-window-click>
+        </a-videosphere>
         <a-sky color="#6EBAA7"></a-sky>
         <a-box
           scale="200 1 100"
@@ -154,9 +176,9 @@
 
       <a-entity id="portal-world">
         <a-box
-          scale="200 1 100"
+          scale="00 1 100"
           position="0 -0.5 49.5"
-          color="blue"></a-box>
+          color="red"></a-box>
       </a-entity>
     </a-scene>
   </body>

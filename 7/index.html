@@ -23,7 +23,9 @@
   <script>
     // Component that places trees where the ground is clicked
     AFRAME.registerComponent('tap-place', {
+      
       init: function () {
+        let count = 0;
         const ground = document.getElementById('ground')
         ground.addEventListener('click', event => {
           // Create new entity for the new object
@@ -34,15 +36,14 @@
           newElement.setAttribute('position', touchPoint)
           newElement.setAttribute('visible', 'false')
 
-          newElement.setAttribute('scale', '8 8 8')
+          newElement.setAttribute('scale', '5 5 5')
 
           // newElement.setAttribute('geometry', 'primitive:plane;width:2;height:2')
-          // newElement.setAttribute('material', 'shader:gif;src:#nyancat;alphaTest:0.5;')
+          newElement.setAttribute('material', 'side:double;')
 
           newElement.setAttribute('xrextras-play-video', 'video: #jelly-video; thumb: #jelly-thumb; canstop: false')
-          // newElement.setAttribute('material', 'shader: chromakey; src: #alpha-video; color: 0.1 0.9 0.2')
-
-          newElement.setAttribute('geometry', 'primitive: plane; height: 1; width: 0.79;')
+          // newElement.setAttribute('material', 'shader: chromakey; src: #jelly-video; color: 0.1 0.9 0.2')
+          newElement.setAttribute('geometry', 'primitive: box;')
 
           const video = document.getElementById("jelly-video")
           this.el.sceneEl.appendChild(newElement)
@@ -65,10 +66,8 @@
     <!-- We can define assets here to be loaded when A-Frame initializes -->
     <a-assets>
 
-      <video id="jelly-video" autoplay muted playsinline crossorigin="anonymous" loop="true" src="ar1.mp4">
+      <video id="jelly-video" autoplay muted playsinline crossorigin="anonymous" loop="true" src="ar1_2.mp4">
       </video>
-      <!-- Credit to Poly by Google for the model: https://poly.google.com/view/6pwiq7hSrHr -->
-      <a-asset-item id="treeModel" src="tree.glb"></a-asset-item>
     </a-assets>
 
     <!-- The raycaster will emit mouse events on scene objects specified with the cantap class -->
