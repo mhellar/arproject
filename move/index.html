@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>8th Wall Web: Manipulate</title>
+
+  <!-- We've included a slightly modified version of A-Frame, which fixes some polish concerns -->
+  <script src="//cdn.8thwall.com/web/aframe/8frame-0.8.2.min.js"></script>
+  <script src="gesture-detector.js"></script>
+  <script src="hold-drag.js"></script>
+  <script src="pinch-scale.js"></script>
+  <script src="two-finger-spin.js"></script>
+  <script src="https://unpkg.com/aframe-text-geometry-component@0.5.1/dist/aframe-text-geometry-component.min.js"></script>
+
+  <!-- XR Extras - provides utilities like load screen, almost there, and error handling.
+         See github.com/8thwall/web/xrextras -->
+  <script defer src="//cdn.8thwall.com/web/xrextras/xrextras.js"></script>
+  <script defer src="//cdn.8thwall.com/web/aframe/aframe-animation-component-5.1.2.min.js"></script>
+  <script src="//cdn.8thwall.com/web/aframe/aframe-extras-4.2.0.min.js"></script>
+  <script src="https://unpkg.com/aframe-text-geometry-component@0.5.1/dist/aframe-text-geometry-component.min.js"></script>
+  <script defer src="//cdn.8thwall.com/web/aframe/aframe-animation-component-5.1.2.min.js"></script>
+  <script src="js/aframe-animation-timeline-component.min.js"></script> 
+
+  <!-- 8thWall Web - Replace the app key here with your own app key -->
+  <script async
+    src="//apps.8thwall.com/xrweb?appKey=3sHnQ4OXZQFe96a2ellw14qGtnFFyZqiEIfH1IbAzm3Cg8uwFWqLgxuw9xPFaafvFyLPhw"></script>
+    <script>
+
+      AFRAME.registerComponent('text-wall', {
+          schema: {
+              message: {
+                  type: 'string',
+                  default: 'Hello, World!'
+              },
+              amount: {
+                  type: 'number',
+                  default: 1
+              },
+              color: {
+                  type: 'color',
+                  default: 'red'
+              },
+              duration: {
+                  type: 'number',
+                  default: 10000
+              },
+          },
+
+          getRandomColor: function () {
+              var letters = '0123456789ABCDEF'.split('');
+              var color = '#';
+              for (var i = 0; i < 6; i++) {
+                  color += letters[Math.floor(Math.random() * 16)];
+              }
+              return color;
+          },
+
+          init: function () {
+              const truisms = ["LOVE FROM ITS VERY NATURE MUST BE TRANSITORY",
+                  "IF I CANNOT INSPIRE LOVE I WILL CAUSE FEAR",
+                  "TOUCH HAS ITS ECSTASIES",
+                  "DREAMS ARE THE ONLY LIFE",
+                  "IMMORALITY WOULD BE PERMISSIBLE IF FOR EXAMPLE ONE WERE CREATIVE",
+                  "THE CAUSE OF WAR IS PREPARATION FOR WAR"];
+              for (var i = 0; i < this.data.amount; i++) {
+                  const randomMonth = truisms[Math.floor(Math.random() * truisms.length)];
+                  var saying = document.createElement('a-entity');
+                  saying.setAttribute('text-geometry', "value: " + randomMonth + "; font: #droidFont");
+                  saying.setAttribute('font', "#droidFont");
+                  saying.setAttribute('scale', '1 1 1');
+                  saying.setAttribute('position', '0 ' + i + ' -2');
+                  saying.setAttribute('material', "color: " + this.getRandomColor() + " ");
+                  this.el.appendChild(saying);
+              }
+          }
+      });
+
+  </script>
+
+
+</head>
+
+<body>
+
+  <a-scene xrweb gesture-detector xrextras-almost-there xrextras-loading xrextras-runtime-error>
+
+    <!-- We can define assets here to be loaded when A-Frame initializes -->
+    <a-scene animation-timeline__1="timeline: #myTimeline; loop: true">
+      <a-assets timeout="1000">
+        <a-asset-item src="font/Futura_Condensed_Bold.json"></a-asset-item>
+         <img id="sky" src="sphere2.jpg">
+        <a-timeline id="myTimeline">
+          <a-timeline-animation select="#text1" name="togglevisible"></a-timeline-animation>
+          <a-timeline-animation select="#text1" name="fadein"></a-timeline-animation>
+          <!-- <a-timeline-animation select="#text2" name="positionin"></a-timeline-animation> -->
+          <a-timeline-animation select="#text1" name="positionout"></a-timeline-animation>
+          <a-timeline-animation select="#text1" name="togglevisibleoff"></a-timeline-animation>
+          
+          <a-timeline-animation select="#text2" name="togglevisible"></a-timeline-animation>
+          <a-timeline-animation select="#text2" name="fadein"></a-timeline-animation>
+          <!-- <a-timeline-animation select="#text2" name="positionin"></a-timeline-animation> -->
+          <a-timeline-animation select="#text2" name="positionout"></a-timeline-animation>
+          <a-timeline-animation select="#text2" name="togglevisibleoff"></a-timeline-animation>
+  
+          <a-timeline-animation select="#text3" name="togglevisible"></a-timeline-animation>
+          <a-timeline-animation select="#text3" name="fadein"></a-timeline-animation>
+          <!-- <a-timeline-animation select="#text3" name="positionin"></a-timeline-animation> -->
+          <a-timeline-animation select="#text3" name="positionout"></a-timeline-animation>
+          <a-timeline-animation select="#text3" name="togglevisibleoff"></a-timeline-animation>
+  
+          <a-timeline-animation select="#text4" name="togglevisible"></a-timeline-animation>
+          <a-timeline-animation select="#text4" name="fadein"></a-timeline-animation>
+          <!-- <a-timeline-animation select="#text3" name="positionin"></a-timeline-animation> -->
+          <a-timeline-animation select="#text4" name="positionout"></a-timeline-animation>
+          <a-timeline-animation select="#text4" name="togglevisibleoff"></a-timeline-animation>
+  
+          <a-timeline-animation select="#text5" name="togglevisible"></a-timeline-animation>
+          <a-timeline-animation select="#text5" name="fadein"></a-timeline-animation>
+          <!-- <a-timeline-animation select="#text3" name="positionin"></a-timeline-animation> -->
+          <a-timeline-animation select="#text5" name="positionout"></a-timeline-animation>
+          <a-timeline-animation select="#text5" name="togglevisibleoff"></a-timeline-animation>
+          
+          <a-timeline-animation select="#text6" name="togglevisible"></a-timeline-animation>
+          <a-timeline-animation select="#text6" name="fadein"></a-timeline-animation>
+          <!-- <a-timeline-animation select="#text2" name="positionin"></a-timeline-animation> -->
+          <a-timeline-animation select="#text6" name="positionout"></a-timeline-animation>
+          <a-timeline-animation select="#text6" name="togglevisibleoff"></a-timeline-animation>
+  
+          <a-timeline-animation select="#text7" name="togglevisible"></a-timeline-animation>
+          <a-timeline-animation select="#text7" name="fadein"></a-timeline-animation>
+          <!-- <a-timeline-animation select="#text2" name="positionin"></a-timeline-animation> -->
+          <a-timeline-animation select="#text7" name="positionout"></a-timeline-animation>
+          <a-timeline-animation select="#text7" name="togglevisibleoff"></a-timeline-animation>
+  
+          <a-timeline-animation select="#text8" name="togglevisible"></a-timeline-animation>
+          <a-timeline-animation select="#text8" name="fadein"></a-timeline-animation>
+          <!-- <a-timeline-animation select="#text2" name="positionin"></a-timeline-animation> -->
+          <a-timeline-animation select="#text8" name="positionout"></a-timeline-animation>
+          <a-timeline-animation select="#text8" name="togglevisibleoff"></a-timeline-animation>
+  
+          <a-timeline-animation select="#text9" name="togglevisible"></a-timeline-animation>
+          <a-timeline-animation select="#text9" name="fadein"></a-timeline-animation>
+          <!-- <a-timeline-animation select="#text2" name="positionin"></a-timeline-animation> -->
+          <a-timeline-animation select="#text9" name="positionout"></a-timeline-animation>
+          <a-timeline-animation select="#text9" name="togglevisibleoff"></a-timeline-animation>
+  
+        </a-timeline>
+  
+        <a-mixin id="text"
+          text="align: center; color: black; width: 60; opacity: 0"
+          animation__fadein="property: components.text.material.uniforms.opacity.value; from: 0; to: 1; dur: 100; easing: linear; autoplay: false"
+          animation__fadeout="property: components.text.material.uniforms.opacity.value; from: 1; to: 0; dur: 100; easing: linear; autoplay: false"
+          animation__togglevisible="property: visible; from: false; to: true; dur: 1; autoplay: false"
+          animation__togglevisibleoff="property: visible; from: true; to: false; dur: 1; autoplay: false"
+          position="0 2 -3"
+          visible="false"></a-mixin>
+      </a-assets>
+
+    <!-- The raycaster will emit mouse events on scene objects specified with the cantap class -->
+    <a-camera id="camera" position="0 8 8" raycaster="objects: .cantap" cursor="
+          fuse: false;
+          rayOrigin: mouse;">
+    </a-camera>
+
+    <a-entity light="type: directional;
+               intensity: 0.8;" position="1 4.3 2.5">
+    </a-entity>
+
+    <a-light type="ambient" intensity="1"></a-light>
+    <a-entity class="cantap" hold-drag two-finger-spin pinch-scale
+      scale="1 1 1"><a-entity id="text1" mixin="text" text="value: IF" position="0 -10 0"
+      animation__positionin="property: position; to: 0 0 10; dur: 100; autoplay: false"
+      animation__positionout="property: position; from: 0 6 -30; to: 0 2 2; dur: 1000; autoplay: false"></a-entity>
+<a-entity id="text2" mixin="text" text="value: I" position="0 -30 0"
+      animation__positionin="property: position; to: 0 0 10; dur: 100; autoplay: false"
+      animation__positionout="property: position; from: 0 6 -30; to: 0 2 2; dur: 1000; autoplay: false"></a-entity>
+<a-entity id="text3" mixin="text" text="value: CANNOT" position="-2 -30 0"
+      animation__positionin="property: position; to: -2 0 10; dur: 100; autoplay: false"
+      animation__positionout="property: position; from: -2 6 -30; to: 0 2 2; dur: 1000; autoplay: false"></a-entity>
+<a-entity id="text4" mixin="text" text="value: INSPIRE" position="-2 -30 0"
+      animation__positionin="property: position; to: -2 0 10; dur: 100; autoplay: false"
+      animation__positionout="property: position; from: -2 6 -30; to: 0 2 2; dur: 1000; autoplay: false"></a-entity>
+<a-entity id="text5" mixin="text" text="value: LOVE" position="-2 -30 0"
+      animation__positionin="property: position; to: -2 0 10; dur: 100; autoplay: false"
+      animation__positionout="property: position; from: -2 6 -30; to: 0 2 2; dur: 1000; autoplay: false"></a-entity>
+<a-entity id="text6" mixin="text" text="value: I" position="0 -30 0"
+      animation__positionin="property: position; to: 0 0 10; dur: 100; autoplay: false"
+      animation__positionout="property: position; from: 0 6 -30; to: 0 2 2; dur: 1000; autoplay: false"></a-entity>
+<a-entity id="text7" mixin="text" text="value: WILL" position="-2 -30 0"
+      animation__positionin="property: position; to: -2 0 10; dur: 100; autoplay: false"
+      animation__positionout="property: position; from: -2 6 -30; to: -2 2 2; dur: 1000; autoplay: false"></a-entity>
+<a-entity id="text8" mixin="text" text="value: INSPIRE" position="-2 -30 0"
+      animation__positionin="property: position; to: -2 0 10; dur: 100; autoplay: false"
+      animation__positionout="property: position; from: -2 6 -30; to: -2 2 2; dur: 1000; autoplay: false"></a-entity>
+<a-entity id="text9" mixin="text" text="value: FEAR" position="0 -30 0"
+      animation__positionin="property: position; to: -2 0 10; dur: 100; autoplay: false"
+      animation__positionout="property: position; from: -2 6 -30; to: -2 2 2; dur: 1000; autoplay: false"></a-entity>
+
+    
+      
+    </a-entity>
+
+   
+
+    <a-entity id="ground" class="cantap" geometry="primitive: box"
+      material="color: #ffffff; transparent: true; opacity: 0.0" scale="1000 2 1000" position="0 -1 0">
+    </a-entity>
+  </a-scene>
+</body>
+
+</html>
