@@ -10,8 +10,6 @@
   <script src="//cdn.8thwall.com/web/aframe/aframe-animation-component-5.1.2.min.js"></script>
   <script src="https://unpkg.com/aframe-chromakey-material/dist/aframe-chromakey-material.min.js"></script>
 
-
-  <script src="https://rawgit.com/mayognaise/aframe-gif-shader/master/dist/aframe-gif-shader.min.js"></script>
   <!-- XR Extras - provides utilities like load screen, almost there, and error handling.
          See github.com/8thwall/web/xrextras -->
   <script defer src="//cdn.8thwall.com/web/xrextras/xrextras.js"></script>
@@ -22,18 +20,13 @@
 
   <script>
     // Component that places trees where the ground is clicked
-    AFRAME.registerComponent('tap-place', {
+    AFRAME.registerComponent('video', {
       
       init: function () {
         let count = 0;
-        const ground = document.getElementById('ground')
-        ground.addEventListener('click', event => {
           // Create new entity for the new object
           const newElement = document.createElement('a-entity')
 
-          // The raycaster gives a location of the touch in the scene
-          const touchPoint = event.detail.intersection.point
-          newElement.setAttribute('position', touchPoint)
           newElement.setAttribute('visible', 'false')
 
           newElement.setAttribute('scale', '5 5 5')
@@ -50,7 +43,7 @@
           // Once the model is loaded, we are ready to show it popping in using an animation
           newElement.setAttribute('visible', 'true')
           video.play();
-        })
+
       }
     })
 
@@ -61,19 +54,20 @@
 
 <body>
   <!-- We must add the tap-place component to the scene so it has an effect -->
-  <a-scene xrweb tap-place xrextras-almost-there xrextras-loading xrextras-runtime-error>
+  <a-scene xrweb xrextras-almost-there xrextras-loading xrextras-runtime-error>
 
     <!-- We can define assets here to be loaded when A-Frame initializes -->
     <a-assets>
 
-      <video id="jelly-video" autoplay muted playsinline crossorigin="anonymous" loop="true" src="ar1_2.mp4">
+      <video id="jelly-video" autoplay muted playsinline crossorigin="anonymous" loop="true" src="ar1.mp4">
       </video>
     </a-assets>
 
     <!-- The raycaster will emit mouse events on scene objects specified with the cantap class -->
     <a-camera position="0 8 0" raycaster="objects: .cantap" cursor="
           fuse: false;
-          rayOrigin: mouse;">
+          rayOrigin: mouse;"
+          video>
     </a-camera>
 
     <a-entity light="type: directional;
@@ -82,10 +76,6 @@
 
     <a-light type="ambient" intensity="1"></a-light>
 
-    <!-- Adding the cantap class allows the ground to be clicked -->
-    <a-entity id="ground" class="cantap" geometry="primitive: box"
-      material="color: #ffffff; transparent: true; opacity: 0.0" scale="1000 2 1000" position="0 -1 0">
-    </a-entity>
   </a-scene>
 </body>
 
