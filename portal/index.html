@@ -5,7 +5,10 @@
     <title>8th Wall Web: Portal</title>
 
     <!-- We've included a slightly modified version of A-Frame, which fixes some polish concerns -->
-    <script src="//cdn.8thwall.com/web/aframe/8frame-0.8.2.min.js"></script>
+    <script src="//cdn.8thwall.com/web/aframe/8frame-1.0.4.min.js"></script>
+    <script src="https://unpkg.com/aframe-text-geometry-component@0.5.1/dist/aframe-text-geometry-component.min.js"></script>
+    <script defer src="//cdn.8thwall.com/web/aframe/aframe-animation-component-5.1.2.min.js"></script>
+    <script src="js/aframe-animation-timeline-component.min.js"></script> 
 
     <!-- XR Extras - provides utilities like load screen, almost there, and error handling.
          See github.com/8thwall/web/xrextras -->
@@ -27,7 +30,7 @@
       AFRAME.registerComponent('portal', {
         schema: {
           width: {default: 4},
-          height: {default: 6},
+          height: {default: 8},
           depth: {default: 1},
         },
         init: function(){
@@ -72,10 +75,78 @@
       xrextras-tap-recenter>
 
       <!-- We can define assets here to be loaded when A-Frame initializes -->
-      <a-assets>
-        <!-- Credit to Poly by Google for the model: https://poly.google.com/view/0fVRHo65E-j -->
-        <a-asset-item id="unicornModel" src="unicorn.glb"></a-asset-item>
-      </a-assets>
+
+      <a-scene animation-timeline__1="timeline: #myTimeline; loop: true">
+        <a-assets timeout="1000">
+          <a-asset-item id="futura" src="font/Futura_Condensed_Bold.json"></a-asset-item>
+           <img id="sky" src="sphere2.jpg">
+          <a-timeline id="myTimeline">
+            <a-timeline-animation select="#text1" name="togglevisible"></a-timeline-animation>
+            <a-timeline-animation select="#text1" name="fadein"></a-timeline-animation>
+            <!-- <a-timeline-animation select="#text2" name="positionin"></a-timeline-animation> -->
+            <a-timeline-animation select="#text1" name="positionout"></a-timeline-animation>
+            <a-timeline-animation select="#text1" name="togglevisibleoff"></a-timeline-animation>
+            
+            <a-timeline-animation select="#text2" name="togglevisible"></a-timeline-animation>
+            <a-timeline-animation select="#text2" name="fadein"></a-timeline-animation>
+            <!-- <a-timeline-animation select="#text2" name="positionin"></a-timeline-animation> -->
+            <a-timeline-animation select="#text2" name="positionout"></a-timeline-animation>
+            <a-timeline-animation select="#text2" name="togglevisibleoff"></a-timeline-animation>
+    
+            <a-timeline-animation select="#text3" name="togglevisible"></a-timeline-animation>
+            <a-timeline-animation select="#text3" name="fadein"></a-timeline-animation>
+            <!-- <a-timeline-animation select="#text3" name="positionin"></a-timeline-animation> -->
+            <a-timeline-animation select="#text3" name="positionout"></a-timeline-animation>
+            <a-timeline-animation select="#text3" name="togglevisibleoff"></a-timeline-animation>
+    
+            <a-timeline-animation select="#text4" name="togglevisible"></a-timeline-animation>
+            <a-timeline-animation select="#text4" name="fadein"></a-timeline-animation>
+            <!-- <a-timeline-animation select="#text3" name="positionin"></a-timeline-animation> -->
+            <a-timeline-animation select="#text4" name="positionout"></a-timeline-animation>
+            <a-timeline-animation select="#text4" name="togglevisibleoff"></a-timeline-animation>
+    
+            <a-timeline-animation select="#text5" name="togglevisible"></a-timeline-animation>
+            <a-timeline-animation select="#text5" name="fadein"></a-timeline-animation>
+            <!-- <a-timeline-animation select="#text3" name="positionin"></a-timeline-animation> -->
+            <a-timeline-animation select="#text5" name="positionout"></a-timeline-animation>
+            <a-timeline-animation select="#text5" name="togglevisibleoff"></a-timeline-animation>
+            
+            <a-timeline-animation select="#text6" name="togglevisible"></a-timeline-animation>
+            <a-timeline-animation select="#text6" name="fadein"></a-timeline-animation>
+            <!-- <a-timeline-animation select="#text2" name="positionin"></a-timeline-animation> -->
+            <a-timeline-animation select="#text6" name="positionout"></a-timeline-animation>
+            <a-timeline-animation select="#text6" name="togglevisibleoff"></a-timeline-animation>
+    
+            <a-timeline-animation select="#text7" name="togglevisible"></a-timeline-animation>
+            <a-timeline-animation select="#text7" name="fadein"></a-timeline-animation>
+            <!-- <a-timeline-animation select="#text2" name="positionin"></a-timeline-animation> -->
+            <a-timeline-animation select="#text7" name="positionout"></a-timeline-animation>
+            <a-timeline-animation select="#text7" name="togglevisibleoff"></a-timeline-animation>
+    
+            <a-timeline-animation select="#text8" name="togglevisible"></a-timeline-animation>
+            <a-timeline-animation select="#text8" name="fadein"></a-timeline-animation>
+            <!-- <a-timeline-animation select="#text2" name="positionin"></a-timeline-animation> -->
+            <a-timeline-animation select="#text8" name="positionout"></a-timeline-animation>
+            <a-timeline-animation select="#text8" name="togglevisibleoff"></a-timeline-animation>
+    
+            <a-timeline-animation select="#text9" name="togglevisible"></a-timeline-animation>
+            <a-timeline-animation select="#text9" name="fadein"></a-timeline-animation>
+            <!-- <a-timeline-animation select="#text2" name="positionin"></a-timeline-animation> -->
+            <a-timeline-animation select="#text9" name="positionout"></a-timeline-animation>
+            <a-timeline-animation select="#text9" name="togglevisibleoff"></a-timeline-animation>
+    
+          </a-timeline>
+    
+          <a-mixin id="text"
+            text="align: center; color: black; width: 120; opacity: 0"
+            scale="3.5 3.5 3.5"
+            animation__fadein="property: components.text.material.uniforms.opacity.value; from: 0; to: 1; dur: 100; easing: linear; autoplay: false"
+            animation__fadeout="property: components.text.material.uniforms.opacity.value; from: 1; to: 0; dur: 100; easing: linear; autoplay: false"
+            animation__togglevisible="property: visible; from: false; to: true; dur: 1; autoplay: false"
+            animation__togglevisibleoff="property: visible; from: true; to: false; dur: 1; autoplay: false"
+            position="0 2 -3"
+            visible="false"></a-mixin>
+        </a-assets>
 
       <a-camera
         id="camera"
@@ -83,18 +154,18 @@
       </a-camera>
 
       <!-- Doorway -->
-      <a-box
+      <!-- <a-box
         scale="1 6 1"
         position="-2.5 3 0"
-        color="cyan"></a-box>
+        color="grey"></a-box>
       <a-box
         scale="1 6 1"
         position="2.5 3 0"
-        color="cyan"></a-box>
+        color="grey"></a-box>
       <a-box
         scale="6 1 1"
         position="0 6.5 0"
-        color="cyan"></a-box>
+        color="grey"></a-box> -->
 
       <!-- Hider walls -->
       <a-entity id="hider-walls">
@@ -134,29 +205,55 @@
 
       <a-entity id="portal-wall">
         <a-plane
-          scale="4 6 1"
+          scale="4 8 1"
           rotation="180 0 0"
           position="0 3 0.5"
           hider-material></a-plane>
       </a-entity>
 
       <a-entity id="portal-contents">
-        <a-entity
-          scale="0.3 0.3 0.3"
-          position="0 0 -7"
-          gltf-model="#unicornModel"></a-entity>
-        <a-sky src="#pines"></a-sky>
-        <a-box
+
+        <a-entity id="text1" mixin="text" text-geometry="value: IF; font: #futura; style: bold;" material="color:lavenderblush; metalness:1; roughness: 0; sphericalEnvMap: #sky; bevelEnabled: true; size:20; bevelSize: 0.05; bevelThickness: 0.05; curveSegments: 12;" position="0 -10 0"
+        animation__positionin="property: position; to: 0 0 10; dur: 100; autoplay: false"
+        animation__positionout="property: position; from: -1 2 -10; to: 0 1.6 1.5; dur: 1200; autoplay: false"></a-entity>
+<a-entity id="text2" mixin="text" text-geometry="value: I; font: #futura; style: bold;" material="color:lavenderblush; metalness:1; roughness: 0; sphericalEnvMap: #sky; bevelEnabled: true; size:20; bevelSize: 0.05; bevelThickness: 0.05; curveSegments: 12;" position="0 -10 0"
+        animation__positionin="property: position; to: 0 0 10; dur: 100; autoplay: false"
+        animation__positionout="property: position; from: -1 2 -10; to: 0 1.6 1.5; dur: 1200; autoplay: false"></a-entity>
+<a-entity id="text3" mixin="text" text-geometry="value: CANNOT; font: #futura; style: bold;" material="color:lavenderblush; metalness:1; roughness: 0; sphericalEnvMap: #sky; bevelEnabled: true; size:20; bevelSize: 0.05; bevelThickness: 0.05; curveSegments: 12;" position="-3 -10 0"
+        animation__positionin="property: position; to: -3 0 10; dur: 100; autoplay: false"
+        animation__positionout="property: position; from: -3 2 -10; to: -3 1.6 1.5; dur: 1200; autoplay: false"></a-entity>
+<a-entity id="text4" mixin="text" text-geometry="value: INSPIRE; font: #futura; style: bold;" material="color:lavenderblush; metalness:1; roughness: 0; sphericalEnvMap: #sky; bevelEnabled: true; size:20; bevelSize: 0.05; bevelThickness: 0.05; curveSegments: 12;" position="-3 -10 0"
+        animation__positionin="property: position; to: -3 0 10; dur: 100; autoplay: false"
+        animation__positionout="property: position; from: -3 2 -10; to: -3 1.6 1.5; dur: 1200; autoplay: false"></a-entity>
+<a-entity id="text5" mixin="text" text-geometry="value: LOVE; font: #futura; style: bold;" material="color:lavenderblush; metalness:1; roughness: 0; sphericalEnvMap: #sky; bevelEnabled: true; size:20; bevelSize: 0.05; bevelThickness: 0.05; curveSegments: 12;" position2"-3 -10 0"
+        animation__positionin="property: position; to: -2 0 10; dur: 100; autoplay: false"
+        animation__positionout="property: position; from: -2 2 -10; to: -2 1.6 1.5; dur: 1200; autoplay: false"></a-entity>
+<a-entity id="text6" mixin="text" text-geometry="value: I; font: #futura; style: bold;" material="color:lavenderblush; metalness:1; roughness: 0; sphericalEnvMap: #sky; bevelEnabled: true; size:20; bevelSize: 0.05; bevelThickness: 0.05; curveSegments: 12;" position="0 -10 0"
+        animation__positionin="property: position; to: 0 0 10; dur: 100; autoplay: false"
+        animation__positionout="property: position; from: -1 2 -10; to: 0 1.6 1.5; dur: 1200; autoplay: false"></a-entity>
+<a-entity id="text7" mixin="text" text-geometry="value: WILL; font: #futura; style: bold;" material="color:lavenderblush; metalness:1; roughness: 0; sphericalEnvMap: #sky; bevelEnabled: true; size:20; bevelSize: 0.05; bevelThickness: 0.05; curveSegments: 12;" position="-2 -10 0"
+        animation__positionin="property: position; to: -2 0 10; dur: 100; autoplay: false"
+        animation__positionout="property: position; from: -2 2 -10; to: -2 1.6 1.5; dur: 1200; autoplay: false"></a-entity>
+<a-entity id="text8" mixin="text" text-geometry="value: INSPIRE; font: #futura; style: bold;" material="color:lavenderblush; metalness:1; roughness: 0; sphericalEnvMap: #sky; bevelEnabled: true; size:20; bevelSize: 0.05; bevelThickness: 0.05; curveSegments: 12;" position="-3 -10 0"
+        animation__positionin="property: position; to: -3 0 10; dur: 100; autoplay: false"
+        animation__positionout="property: position; from: -3 2 -10; to: -3 1.6 1.5; dur: 1200; autoplay: false"></a-entity>
+<a-entity id="text9" mixin="text" text-geometry="value: FEAR; font: #futura; style: bold;" material="color:lavenderblush; metalness:1; roughness: 0; sphericalEnvMap: #sky; bevelEnabled: true; size:20; bevelSize: 0.05; bevelThickness: 0.05; curveSegments: 12;" position="-2 -10 0"
+        animation__positionin="property: position; to: -2 0 10; dur: 100; autoplay: false"
+        animation__positionout="property: position; from: -2 2 -10; to: -3 1.6 1.5; dur: 1200; autoplay: false"></a-entity>
+
+
+        <a-sky src="#sky"></a-sky>
+        <!-- <a-box
           scale="200 1 100"
           position="0 -0.5 -49.5"
-          color="blue"></a-box>
+          color="blue"></a-box> -->
       </a-entity>
 
       <a-entity id="portal-world">
-        <a-box
+        <!-- <a-box
           scale="200 1 100"
           position="0 -0.5 49.5"
-          color="blue"></a-box>
+          color="blue"></a-box> -->
       </a-entity>
     </a-scene>
   </body>
