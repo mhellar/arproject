@@ -5,12 +5,11 @@
     <title>8th Wall Web: Portal</title>
 
     <!-- We've included a slightly modified version of A-Frame, which fixes some polish concerns -->
-    <script src="//cdn.8thwall.com/web/aframe/8frame-1.0.4.min.js"></script>
+    <script src="//cdn.8thwall.com/web/aframe/8frame-0.9.0.min.js"></script>
     <script src="https://unpkg.com/aframe-text-geometry-component@0.5.1/dist/aframe-text-geometry-component.min.js"></script>
     <script defer src="//cdn.8thwall.com/web/aframe/aframe-animation-component-5.1.2.min.js"></script>
     <script src="js/aframe-animation-timeline-component.min.js"></script> 
     <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.0/dist/aframe-extras.min.js"></script>
-
 
     <!-- XR Extras - provides utilities like load screen, almost there, and error handling.
          See github.com/8thwall/web/xrextras -->
@@ -87,7 +86,7 @@
 
           <a-asset-item id="column" src="greek_column/scene.gltf"></a-asset-item>
 
-          <a-asset-item id="war" src="war.glb"></a-asset-item>
+          <a-asset-item id="war" src="longtext3.glb"></a-asset-item>
     
           <a-mixin id="text"
             text="align: center; color: white; width: 120; opacity: 0"
@@ -161,7 +160,10 @@
       </a-entity>
 
       <a-entity id="portal-contents">
-        <a-entity gltf-model="#war" animation-mixer scale="50 50 50" position="0 2 -50"></a-entity>
+
+        <a-entity gltf-model="#war" scale="400 400 400" position="0 250 -200"></a-entity>
+
+        </a-entity>
 
         <a-sky src="#sky"></a-sky>
         <!-- <a-box
