@@ -69,7 +69,7 @@
 
     <a-assets>
       <video
-        id="alpha-video"
+        id="cummings"
         muted
         autoplay
         playsinline
@@ -78,6 +78,31 @@
         src="cummings.mp4">
       </video>
     </a-assets>
+
+    <a-assets>
+      <video
+        id="mansueto"
+        muted
+        autoplay
+        playsinline
+        crossorigin="anonymous"
+        loop="true"
+        src="mansueto.mp4">
+      </video>
+    </a-assets>
+
+    <a-assets>
+      <video
+        id="socialservice"
+        muted
+        autoplay
+        playsinline
+        crossorigin="anonymous"
+        loop="true"
+        src="socialservice.mp4">
+      </video>
+    </a-assets>
+
 
     <a-camera
       position="0 4 10"
@@ -90,11 +115,23 @@
     <a-light type="ambient" intensity="1"></a-light>
 
     <!-- Note: "name:" must be set to the name of the image target uploaded to the 8th Wall Console -->
-    <a-entity
-      target-video="name: cummings_cv; video: #alpha-video;"
-      material="shader: chromakey; src: #alpha-video; color: 0.1 0.9 0.2"
-      geometry="primitive: plane; height: 0.6; width: 1.38;">
-    </a-entity>
+   <a-entity
+   target-video="name: cummings_cv; video: #cummings;"
+   material="shader: chromakey; src: #cummings; color: 0.1 0.9 0.2"
+   geometry="primitive: plane; height: 0.6; width: 1.38;">
+   </a-entity>
+
+   <a-entity
+   target-video="name: mansueto_cv; video: #mansueto;"
+   material="shader: chromakey; src: #mansueto; color: 0.1 0.9 0.2"
+   geometry="primitive: plane; height: 0.6; width: 1.38;">
+   </a-entity>
+
+   <a-entity
+   target-video="name: ssadmin_cv; video: #socialservice;"
+   material="shader: chromakey; src: #socialservice; color: 0.1 0.9 0.2"
+   geometry="primitive: plane; height: 0.6; width: 1.38;">
+   </a-entity>
 
   </a-scene>
 
