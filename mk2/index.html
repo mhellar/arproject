@@ -6,7 +6,7 @@
 
   <title>8th Wall Alpha Video Example</title>
 
-  <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+  <script src="//cdn.8thwall.com/web/aframe/8frame-0.9.0.min.js"></script>
 
   <!-- https://github.com/nikolaiwarner/aframe-chromakey-material/blob/master/README.md -->
   <script src="https://unpkg.com/aframe-chromakey-material/dist/aframe-chromakey-material.min.js"></script>
@@ -118,7 +118,7 @@
    <a-entity
    target-video="name: cummings_cv; video: #cummings;"
    material="shader: chromakey; src: #cummings; color: 0.1 0.9 0.2"
-   geometry="primitive: plane; height: 0.6; width: 1.38;">
+   geometry="primitive: plane; height: 1; width: 1.755;">
    </a-entity>
 
    <a-entity
@@ -127,11 +127,14 @@
    geometry="primitive: plane; height: 0.6; width: 1.38;">
    </a-entity>
 
-   <a-entity
-   target-video="name: ssadmin_cv; video: #socialservice;"
-   material="shader: chromakey; src: #socialservice; color: 0.1 0.9 0.2"
-   geometry="primitive: plane; height: 0.6; width: 1.38;">
+ 
+    <a-entity
+    target-video="name: ssadmin_cv; video: #socialservice;"
+    material="shader: chromakey; src: #socialservice; color: 0.1 0.9 0.2"
+    geometry="primitive: plane; height: 0.768; width: 1.38;"
+    >
    </a-entity>
+
 
   </a-scene>
 
