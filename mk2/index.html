@@ -18,11 +18,14 @@
   <!-- 8thWall Web - Replace the app key here with your own app key -->
   <script src="//apps.8thwall.com/xrweb?appKey=cU28jw47ipJwhJHVEqEy3C8c5bCcyZEPff0Td3SN8WLjDcgRx4kdDQiuTKCdq9VV6e05Wx"></script>
 
-  <script>
+ <link rel="stylesheet" type="text/css" href="index.css">
+ 
+ <script>
     AFRAME.registerComponent('target-video', {
       schema: {
         name: { type: 'string' },
         video: {type: 'string' },
+        div: { type: 'string' }
       },
       init: function () {
         const object3D = this.el.object3D
@@ -35,6 +38,8 @@
           if (name != detail.name) {
             return
           }
+          var x = document.getElementById(this.data.div);
+          x.style.display = "none";
           v.play()
           object3D.position.copy(detail.position)
           object3D.quaternion.copy(detail.rotation)
@@ -46,6 +51,8 @@
           if (name != detail.name) {
             return
           }
+          var x = document.getElementById(this.data.div);
+          x.style.display = "block";
           v.pause() 
           object3D.visible = false
         }
@@ -59,7 +66,11 @@
 </head>
 
 <body>
-
+  <div id="c_vantage" style="display:block;" class="myimg">
+    <h3><b>FRAME IMAGE IN CAMERA</b></h3>
+    <img src="cummings.png">
+   
+  </div>
   <a-scene
     xrweb="disableWorldTracking: true"
     xrextras-gesture-detector
@@ -116,9 +127,9 @@
 
     <!-- Note: "name:" must be set to the name of the image target uploaded to the 8th Wall Console -->
    <a-entity
-   target-video="name: cummings_cv; video: #cummings;"
+   target-video="name: cummings_cv; video: #cummings; div: c_vantage;"
    material="shader: chromakey; src: #cummings; color: 0.1 0.9 0.2"
-   geometry="primitive: plane; height: 1; width: 1.755;">
+   geometry="primitive: plane; height: .99; width: 1.78;">
    </a-entity>
 
    <a-entity
