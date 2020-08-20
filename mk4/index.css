@@ -1,0 +1,27 @@
+div.myimg {
+  z-index: 10;
+  width: 100%; /* image box size as % of container, see step 1 */
+  height: 100%; /* image box size as % of container, see step 1 */
+  object-fit: cover;
+    max-width: 100%;
+    object-position: center;
+  position: absolute;    
+  top: 0px;
+  left: 0px;
+  text-align: center;
+  color: #FFFFFF;
+  vertical-align: middle;
+  user-select: none;
+  opacity: 0.6;
+}
+img{
+  object-fit: cover;
+    max-width: 100%;
+    object-position: center;
+}
+h3 {
+  color: black;
+  font-family: Futura;
+}
+
+
