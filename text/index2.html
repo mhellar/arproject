@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>A-Frame Animation Timeline Component - Bohemian</title>
+    <meta name="description" content="Basic example for Animation Timeline component."></meta>
+    <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+    <script src="js/aframe-animation-timeline-component.min.js"></script> 
+  </head>
+  <body>
+
+    <a-scene animation-timeline__1="timeline: #myTimeline; loop: true">
+      <a-assets timeout="10000">
+        <img id="love" src="love.png" crossorigin="anonymous">
+        <img id="skyTexture" src="https://cdn.aframe.io/a-painter/images/sky.jpg" crossorigin="anonymous">
+
+        <a-asset-item src="https://cdn.aframe.io/fonts/Roboto-msdf.json"></a-asset-item>
+
+        <a-timeline id="myTimeline">
+          <a-timeline-animation select="#text1" name="togglevisible"></a-timeline-animation>
+          <a-timeline-animation select="#text1" name="position"></a-timeline-animation>
+          <a-timeline-animation select="#text1" name="fadein"></a-timeline-animation>
+          <a-timeline-animation select="#text1" name="fadeout"></a-timeline-animation>
+          <a-timeline-animation select="#text1" name="togglevisibleoff"></a-timeline-animation>
+        </a-timeline>
+
+        <a-mixin id="text"
+        text="align: center; color: #333; width: 6; opacity: 0"
+        animation__fadein="property: components.text.material.uniforms.opacity.value; from: 0; to: 1; dur: 6000; easing: linear; autoplay: false"
+        animation__position="property: position; to: 0 6 5; dur: 8000; autoplay: false"
+        animation__fadeout="property: components.text.material.uniforms.opacity.value; from: 1; to: 0; dur: 6000; easing: linear; autoplay: false"
+        animation__togglevisible="property: visible; from: false; to: true; dur: 1; autoplay: false"
+        animation__togglevisibleoff="property: visible; from: true; to: false; dur: 1; autoplay: false"
+        position="0 2 -3"
+        visible="false"></a-mixin>
+    </a-assets>
+    
+
+      <a-entity id="text1" mixin="text" text="">
+        <a-box src="#love" position="0 -2 -8" scale="3.620 1.171 1"></a-image>
+      </a-entity>
+      <a-sky id="sky" src="#skyTexture" animation__color="property: components.material.material.color; type: color; from: #FAFAFA; to: #111; dur: 2000; autoplay: false"></a-sky>
+    </a-scene>
